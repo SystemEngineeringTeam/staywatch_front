@@ -1,38 +1,43 @@
-# create-svelte
+# staywatch
+シス研stay_watchのフロント用リポジトリです。
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+# 開発用サーバーの立ち上げ方
+```zsh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+# ブランチの命名規則
+`[prefix]-[説明]`
 
-To create a production version of your app:
+ex: `update-readme`
 
-```bash
-npm run build
-```
+# コミットメッセージの規則
+`[prefix]: [説明]`
 
-You can preview the production build with `npm run preview`.
+ex: `update: README.mdを更新`
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+# prefixの一覧
+| 接頭辞 | 説明 |
+|:---:|:---|
+| fix | 既存の機能に問題があった場合に使用します。 |
+| hotfix | 既存の機能にクリティカルな問題があった場合に使用します。 |
+| add | 新しいファイルや機能を追加する場合に使用します。 |
+| feat | 新しい機能やファイルを追加する場合に使用します。 |
+| update | 既存の機能に問題がなく、ただし修正を加えたい場合に使用します。 |
+| change | 仕様変更により、既存の機能に修正を加えた場合に使用します。 |
+| clean | refactor	コードを修正し、改善する場合に使用します。 |
+| improve | コードの改善をする場合に使用します。 |
+| disable | 機能を一時的に無効にする場合に使用します。 |
+| remove | delete	ファイルを削除する場合や、機能を削除する場合に使用します。 |
+| rename | ファイル名を変更する場合に使用します。 |
+| move | ファイルを移動する場合に使用します。 |
+| upgrade | バージョンをアップグレードする場合に使用します。 |
+| revert | 以前のコミットに戻す場合に使用します。 |
+| docs | ドキュメントを修正する場合に使用します。 |
+| style | コーディングスタイルの修正をする場合に使用します。 |
+| perf | コードのパフォーマンスを改善する場合に使用します。 |
+| test | テストコードを修正する場合や、テストコードを追加する場合に使用します。 |
+| chore | ビルドツールやライブラリで自動生成されたものをコミットする場合や、上記の接頭辞に当てはまらない修正をする場合に使用します。 |
+
+# LICENSE
+[MIT](./LICENSE)
