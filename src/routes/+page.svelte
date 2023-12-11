@@ -1,12 +1,11 @@
 <script lang="ts">
   import Header from './Header.svelte';
+  import Stay from './stay.svelte';
   import './styles.css';
+
 </script>
 
-<div class="app">
   <Header />
+  <Stay/>
 
-  <main>
-    <slot />
-  </main>
-</div>
+

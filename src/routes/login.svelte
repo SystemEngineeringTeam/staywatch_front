@@ -2,10 +2,10 @@
   import {isAdmmin} from './store';
   import { createEventDispatcher } from 'svelte';
   let password = '';
-  const dispatch = createEventDispatcher();
   const handleSubmit = () => {
     if (password == 'Set') {
         isAdmmin.set(true);
+        alert('ログインしました');
     } else {
       alert('パスワードが違います');
     }

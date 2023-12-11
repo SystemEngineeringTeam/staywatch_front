@@ -1,58 +1,21 @@
 <script lang="ts">
-  import {isAdmmin} from './store';
-  import Stay from './stay.svelte';
-  import Log from './log.svelte';
-  import Administrator from './adoministrator.svelte';
-  import Login from './login.svelte';
-  let page: string;
-
-  page = 'now';
-
-  function nowPage() {
-    page = 'now';
-  }
-
-  function logPage() {
-    page = 'log';
-  }
-
-  function administratorPage() {
-    page = 'administrator';
-  }
-  function login() {
-    page = 'login';
-  }
-
+  import { isAdmmin } from './store';
 </script>
 
 <header>
   <div class="adpage">
-    <button class="now" on:click={nowPage}>現在の滞在者</button>
-    <button class="log" on:click={logPage}>滞在履歴</button>
-    {#if !$isAdmmin }
-      <button class="administrator" on:click={login}>⚫️</button>
+    <button class="now">現在の滞在者</button>
+    <button class="log" >滞在履歴</button>
+    {#if !$isAdmmin}
+      <button class="administrator" >⚫️</button>
     {/if}
     {#if $isAdmmin}
-      <button class="administrator" on:click={administratorPage}>管理者</button>
+      <button class="administrator">管理者</button>
     {/if}
   </div>
 </header>
 
-{#if page == 'now'}
-  <Stay />
-{/if}
 
-{#if page == 'log'}
-  <Log />
-{/if}
-
-{#if page == 'administrator'}
-  <Administrator />
-{/if}
-
-{#if page == 'login'}
-  <Login/>
-{/if}
 
 <style lang="scss">
   .adpage {
