@@ -1,18 +1,16 @@
 <script>
-  import {isAdmmin} from '../store';
+  import { isAdmmin } from '../store';
   import { createEventDispatcher } from 'svelte';
   let password = '';
   const handleSubmit = () => {
     if (password == 'Set') {
-        isAdmmin.set(true);
-        alert('ログインしました');
+      isAdmmin.set(true);
+      alert('ログインしました');
     } else {
       alert('パスワードが違います');
     }
   };
-  
 </script>
-
 
 <div class="login">
   <h1>管理者ログインページ</h1>

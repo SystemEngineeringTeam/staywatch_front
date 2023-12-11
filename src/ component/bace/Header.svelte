@@ -5,17 +5,15 @@
 <header>
   <div class="adpage">
     <button class="now">現在の滞在者</button>
-    <button class="log" >滞在履歴</button>
+    <button class="log">滞在履歴</button>
     {#if !$isAdmmin}
-      <button class="administrator" >⚫️</button>
+      <button class="administrator">⚫️</button>
     {/if}
     {#if $isAdmmin}
       <button class="administrator">管理者</button>
     {/if}
   </div>
 </header>
-
-
 
 <style lang="scss">
   .adpage {

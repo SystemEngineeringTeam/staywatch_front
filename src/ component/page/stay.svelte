@@ -1,6 +1,5 @@
-
 <script>
-      import StayData from '../ui/staydata.svelte';
+  import StayData from '../ui/staydata.svelte';
 </script>
 
 <div class="stay">
@@ -12,12 +11,12 @@
       <h2 class="name">名前</h2>
       <h2 class="time">滞在開始時間</h2>
     </div>
-    <StayData/>
+    <StayData />
   </div>
 </div>
 
 <style lang="scss">
-.stay{
+  .stay {
     h1 {
       font-size: 40px;
       text-align: center;
@@ -63,6 +62,5 @@
         line-height: 50px;
       }
     }
-}
-
+  }
 </style>

@@ -1,7 +1,7 @@
 <script>
-   import Header from '../ component/bace/Header.svelte';
-   import '../styles.css';
+  import Header from '../ component/bace/Header.svelte';
+  import '../styles.css';
 </script>
 
-<Header/>
-<slot/>
+<Header />
+<slot />
