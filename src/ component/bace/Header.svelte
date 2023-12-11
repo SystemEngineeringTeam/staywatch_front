@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isAdmmin } from './store';
+  import { isAdmmin } from '../store';
 </script>
 
 <header>

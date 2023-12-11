@@ -1,5 +1,5 @@
 <script>
-  import {isAdmmin} from './store';
+  import {isAdmmin} from '../store';
   import { createEventDispatcher } from 'svelte';
   let password = '';
   const handleSubmit = () => {

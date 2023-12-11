@@ -1,5 +1,5 @@
 <script>
-  import Data from './logData.svelte';
+  import Data from '../ui/logData.svelte';
 </script>
 
 <div class="log">

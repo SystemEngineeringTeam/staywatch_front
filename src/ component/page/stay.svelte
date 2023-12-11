@@ -1,6 +1,6 @@
 
 <script>
-      import StayData from './staydata.svelte';
+      import StayData from '../ui/staydata.svelte';
 </script>
 
 <div class="stay">
