@@ -1,11 +1,12 @@
 <script>
   import { isAdmmin } from '../store';
-  import { createEventDispatcher } from 'svelte';
+  import {goto} from '$app/navigation';
+
   let password = '';
   const handleSubmit = () => {
     if (password == 'Set') {
       isAdmmin.set(true);
-      alert('ログインしました');
+      goto('/admin');
     } else {
       alert('パスワードが違います');
     }

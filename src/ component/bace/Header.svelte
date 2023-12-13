@@ -4,13 +4,13 @@
 
 <header>
   <div class="adpage">
-    <button class="now">現在の滞在者</button>
-    <button class="log">滞在履歴</button>
+    <a class="now" href="/">現在の滞在者</a>
+    <a class="log" href="/history">滞在履歴</a>
     {#if !$isAdmmin}
-      <button class="administrator">⚫️</button>
+      <a class="administrator" href="/login">⚫️</a>
     {/if}
     {#if $isAdmmin}
-      <button class="administrator">管理者</button>
+      <a class="administrator" href="/admin">管理者</a>
     {/if}
   </div>
 </header>
@@ -24,6 +24,9 @@
 
     .now {
       background-color: #a6a6a6;
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
       margin-top: 10px;
       margin-bottom: 10px;
       margin-left: auto;
@@ -32,6 +35,9 @@
     }
     .log {
       background-color: #a6a6a6;
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
       margin-top: 10px;
       margin-bottom: 10px;
       margin-right: 10px;
@@ -39,6 +45,9 @@
     }
     .administrator {
       background-color: #a6a6a6;
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
       margin-top: 10px;
       margin-bottom: 10px;
       margin-left: 0;
