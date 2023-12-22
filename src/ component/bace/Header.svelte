@@ -10,41 +10,52 @@
       <a class="administrator" href="/login">⚫️</a>
     {/if}
     {#if $isAdmmin}
-      <a class="administrator" href="/admin">管理者</a>
+      <a class="admin" href="/admin">管理人</a>
     {/if}
   </div>
 </header>
 
 <style lang="scss">
   .adpage {
-    background-color: #f0f0f0;
+    border-bottom: 1px solid #000000;
+    position:fixed;
+    top:0%;
+    background-color: #ffffff;
     height: 50px;
     width: 100%;
     display: flex;
 
     .now {
-      background-color: #a6a6a6;
+      border-bottom: 5px solid #b0aeae;
+      background-color: #e0e0e0;
       color: black;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 15px;
       margin-top: 10px;
       margin-bottom: 10px;
       margin-left: auto;
       margin-right: 10px;
       border-radius: 10px;
+      height: 30px;
+      width:100px;
+      text-align: center;
     }
     .log {
-      background-color: #a6a6a6;
+      text-align: center;
+      height: 30px;
+      width:100px;
+      border-bottom: 5px solid #b0aeae;
+      background-color: #e0e0e0;
       color: black;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 15px;
       margin-top: 10px;
       margin-bottom: 10px;
       margin-right: 10px;
       border-radius: 10px;
     }
     .administrator {
-      background-color: #a6a6a6;
+      background-color: #e0e0e0;
       color: black;
       text-decoration: none;
       font-size: 20px;
@@ -54,14 +65,28 @@
       margin-right: 10px;
       border-radius: 10px;
     }
+    .admin{
+      text-align: center;
+      height: 30px;
+      width:100px;
+      border-bottom: 5px solid #b0aeae;
+      background-color: #e0e0e0;
+      color: black;
+      text-decoration: none;
+      font-size: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      border-radius: 10px;
+    }
     .now:hover {
-      background-color: #787878;
+      background-color: #b0aeae;
       margin-top: 10px;
       margin-bottom: 10px;
       border-radius: 10px;
     }
     .log:hover {
-      background-color: #787878;
+      background-color: #b0aeae;
       margin-top: 10px;
       margin-bottom: 10px;
       border-radius: 10px;

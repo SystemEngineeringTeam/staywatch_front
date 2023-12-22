@@ -14,7 +14,7 @@
 </script>
 
 <div class="login">
-  <h1>管理者ログインページ</h1>
+  <h1>管理人ログインページ</h1>
   <input
     type="password"
     class="password"

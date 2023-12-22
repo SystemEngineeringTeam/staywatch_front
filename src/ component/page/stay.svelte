@@ -1,22 +1,35 @@
 <script>
-  import StayData from '../ui/staydata.svelte';
+  import StayersBody from '../ui/stayersBody.svelte';
 </script>
 
 <div class="stay">
   <h1>現在の滞在者</h1>
 
-  <div class="list">
-    <div class="name">
-      <h2 class="class">学年</h2>
-      <h2 class="name">名前</h2>
-      <h2 class="time">滞在開始時間</h2>
-    </div>
-    <StayData />
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>学年</th>
+        <th>名前</th>
+        <th>滞在開始時間</th>
+      </tr>
+    </thead>
+    <StayersBody />
+  </table>
 </div>
 
 <style lang="scss">
   .stay {
+    table {
+      border-radius:5px;
+      width: 80%;
+      margin-top: 100px;
+      margin-left: 10%;
+      background-color: #dddddd;
+      
+      th {
+        font-size: 20px;
+      }
+    }
     h1 {
       font-size: 40px;
       text-align: center;
@@ -28,8 +41,9 @@
       margin-right: auto;
       background-color: white;
       width: 90%;
-      border: solid 5px #717171; /*線*/
-      border-radius: 10px; /*角の丸み*/
+      border: solid 10px #dbd1d1; 
+      border-radius: 10px;
+      
 
       .name {
         display: flex;
@@ -56,7 +70,6 @@
         margin-left: 10px;
         margin-right: 10px;
         border-bottom: 2px solid #717171;
-
         height: 50px;
         text-align: center;
         line-height: 50px;

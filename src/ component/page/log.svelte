@@ -1,18 +1,20 @@
 <script>
-  import Data from '../ui/logData.svelte';
+  import LogBody from '../ui/logBody.svelte';
 </script>
 
 <div class="log">
   <h1>滞在者履歴</h1>
 
-  <div class="list">
-    <div class="name">
-      <h2 class="class">学年</h2>
-      <h2 class="name">名前</h2>
-      <h2 class="time">滞在開始時間</h2>
-    </div>
-    <Data />
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>学年</th>
+        <th>名前</th>
+        <th>滞在終了時間</th>
+      </tr>
+    </thead>
+    <LogBody />
+  </table>
 </div>
 
 <style lang="scss">
@@ -22,45 +24,19 @@
       text-align: center;
       margin-top: 80px;
     }
-    .list {
-      margin-top: 80px;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: white;
-      width: 90%;
-      border: solid 5px #717171; /*線*/
-      border-radius: 10px; /*角の丸み*/
-
-      .name {
-        display: flex;
-        background-color: #717171;
-
-        .class {
-          margin-left: 20px;
-          font-size: 20px;
+    table {
+      width: 80%;
+      margin-top: 100px;
+      margin-left: 10%;
+      background-color: #dddddd;
+      thead {
+        tr {
+          th {
+            font-size: 20px;
+          }
         }
-        .name {
-          margin-left: 25%;
-          font-size: 20px;
-        }
-        .time {
-          margin-left: 25%;
-          font-size: 20px;
-        }
-      }
-      li {
-        list-style: none;
-        font-size: 30px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        border-bottom: 2px solid #717171;
-
-        height: 50px;
-        text-align: center;
-        line-height: 50px;
       }
     }
   }
+
 </style>
