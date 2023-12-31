@@ -93,6 +93,7 @@
     }
     .page {
       .add {
+        box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
         background-color: white;
         margin-top: 80px;
         margin-left: 5%;
@@ -160,6 +161,7 @@
         }
       }
       .list {
+        box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
         margin-top: 80px;
         margin-left: 5%;
         margin-right: 5%;
@@ -189,6 +191,7 @@
       .page {
         display: flex;
         .add {
+          box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
           margin-top: 80px;
           margin-left: 5%;
           width: 90%;

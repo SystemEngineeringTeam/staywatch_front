@@ -25,6 +25,7 @@
       margin-top: 100px;
       margin-left: 10%;
       background-color: #dddddd;
+      box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
       
       th {
         font-size: 20px;

@@ -1,29 +1,8 @@
 <script lang="ts">
   import type { Stayers } from '../../type';
-  const stayersRes: Stayers = {
-    stayers: [
-      {
-        name: '宮腰 颯太',
-        grade: '1',
-        startTime: '12:20'
-      },
-      {
-        name: '井上ショート',
-        grade: '1',
-        startTime: '20:20'
-      },
-      {
-        name: '井上ショート',
-        grade: '1',
-        startTime: '20:20'
-      },
-      {
-        name: '井上ショート',
-        grade: '1',
-        startTime: '20:20'
-      }
-    ]
-  };
+  import stayersRes from "./stayData.json";
+  
+
 </script>
   <tbody>
   {#each stayersRes.stayers as stayer}

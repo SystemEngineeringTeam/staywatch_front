@@ -17,6 +17,7 @@
 
 <style lang="scss">
   .adpage {
+    box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
     border-bottom: 1px solid #000000;
     position:fixed;
     top:0%;
