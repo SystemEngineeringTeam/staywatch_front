@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Stayers } from '../../type';
   import stayersRes from './stayData.json';
 </script>
 

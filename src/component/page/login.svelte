@@ -4,7 +4,7 @@
 
   let password = '';
   const handleSubmit = () => {
-    if (password == 'Set') {
+    if (password === 'Set') {
       isAdmmin.set(true);
       goto('/admin');
     } else {

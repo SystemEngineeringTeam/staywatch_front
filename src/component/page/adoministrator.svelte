@@ -1,33 +1,36 @@
 <script lang="ts">
+  type User = {
+    grade: string;
+    name: string;
+    number: string;
+    address: string;
+  };
+
+  let userList: User[] = [];
   let grade = '';
   let name = '';
   let number = '';
   let address = '';
 
-  let gradeList: string[] = [];
-  let nameList: string[] = [];
-  let numberList: string[] = [];
-  let addressList: string[] = [];
-
   $: disabledCreateButton = grade === '' || name === '' || number === '' || address === '';
 
   // 作成ボタンを押したときの処理
   const handleClickCreateButton = () => {
-    gradeList = [...gradeList, grade];
-    nameList = [...nameList, name];
-    numberList = [...numberList, number];
-    addressList = [...addressList, address];
+    const editUser: User = {
+      grade,
+      name,
+      number,
+      address
+    };
+    userList = [...userList, editUser];
     grade = '';
     name = '';
     number = '';
     address = '';
   };
   // 削除処理
-  const completeItem = (index: number) => {
-    gradeList = gradeList.filter((_, i) => i !== index);
-    nameList = nameList.filter((_, i) => i !== index);
-    numberList = numberList.filter((_, i) => i !== index);
-    addressList = addressList.filter((_, i) => i !== index);
+  const deleteItem = (index: number) => {
+    userList = userList.filter((_, i) => i !== index);
   };
 </script>
 
@@ -62,17 +65,17 @@
       </table>
 
       <div class="scroll">
-        {#if gradeList.length === 0}
+        {#if userList.length === 0}
           <div>誰も登録されていません</div>
         {:else}
-          {#each gradeList as gradeItem, index}
+          {#each userList as user, index}
             <table class="entryList">
               <tr>
-                <td class="gradeList">{gradeItem}</td>
-                <td class="numberList">{numberList[index]}</td>
+                <td class="gradeList">{user.grade}</td>
+                <td class="numberList">{user.number}</td>
                 <td class="nameList">
-                  {nameList[index]}
-                  <button class="delete" on:click={() => completeItem(index)}>削除</button>
+                  {user.name}
+                  <button class="delete" on:click={() => deleteItem(index)}>削除</button>
                 </td>
               </tr>
             </table>
@@ -266,28 +269,6 @@
       text-align: center;
       margin-top: 15px;
     }
-    .scroll {
-      .list {
-        background-color: white;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        flex-wrap: wrap;
-      }
-
-      .list li {
-        font-size: 10px;
-        display: flex;
-      }
-
-      .list li > div {
-        margin-bottom: 5px;
-      }
-
-      .name-item {
-        font-weight: 10px;
-      }
-    }
   }
   .listHead {
     width: 80%;
@@ -303,9 +284,6 @@
     .numberList {
       width: 34%;
     }
-    .grade {
-      width: 34%;
-    }
   }
   .entryList {
     background-color: white;
@@ -317,9 +295,6 @@
       width: 34%;
     }
     .numberList {
-      width: 34%;
-    }
-    .grade {
       width: 34%;
     }
   }
