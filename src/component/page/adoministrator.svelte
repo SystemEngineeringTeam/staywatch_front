@@ -22,7 +22,7 @@
     number = '';
     address = '';
   };
-  // 完了処理
+  // 削除処理
   const completeItem = (index: number) => {
     gradeList = gradeList.filter((_, i) => i !== index);
     nameList = nameList.filter((_, i) => i !== index);
@@ -85,7 +85,6 @@
 
 <style lang="scss">
   .admini {
-    
     h1 {
       font-size: 40px;
       text-align: center;
@@ -169,7 +168,7 @@
         width: 90%;
         height: 350px;
         background-color: #ffffff;
-        border-radius:20px;
+        border-radius: 20px;
         h1 {
           font-size: 30px;
           text-align: center;
@@ -296,7 +295,7 @@
     margin-left: 10%;
     background-color: #d4d4d4;
     text-align: center;
-    border-radius: 10px 10px 0 0; 
+    border-radius: 10px 10px 0 0;
 
     .nameList {
       width: 34%;

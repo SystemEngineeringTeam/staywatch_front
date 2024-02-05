@@ -19,8 +19,8 @@
   .adpage {
     box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
     border-bottom: 1px solid #000000;
-    position:fixed;
-    top:0%;
+    position: fixed;
+    top: 0%;
     background-color: #ffffff;
     height: 50px;
     width: 100%;
@@ -38,13 +38,13 @@
       margin-right: 10px;
       border-radius: 10px;
       height: 30px;
-      width:100px;
+      width: 100px;
       text-align: center;
     }
     .log {
       text-align: center;
       height: 30px;
-      width:100px;
+      width: 100px;
       border-bottom: 5px solid #b0aeae;
       background-color: #e0e0e0;
       color: black;
@@ -66,10 +66,10 @@
       margin-right: 10px;
       border-radius: 10px;
     }
-    .admin{
+    .admin {
       text-align: center;
       height: 30px;
-      width:100px;
+      width: 100px;
       border-bottom: 5px solid #b0aeae;
       background-color: #e0e0e0;
       color: black;

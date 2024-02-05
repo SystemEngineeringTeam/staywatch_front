@@ -1,36 +1,29 @@
 <script lang="ts">
   import type { Stayers } from '../../type';
-  import stayersRes from "./logData.json";
-  
-  
-
+  import stayersRes from './stayData.json';
 </script>
 
 <tbody>
-  {#if stayersRes.stayers.length > 0}
-    {#each stayersRes.stayers as stayer}
-      <tr>
-        <td class="grade">{stayer.grade}</td>
-        <td class="name">{stayer.name}</td>
-        <td class="time">{stayer.startTime}</td>
-      </tr>
-    {/each}
-  {:else}
+  {#each stayersRes.stayers as stayer}
     <tr>
-      <td colspan="3">誰もいません</td>
+      <td class="grade">{stayer.grade}</td>
+      <td class="name">{stayer.name}</td>
+      <td class="time">{stayer.startTime}</td>
     </tr>
-  {/if}
+  {/each}
 </tbody>
 
-<style lang=scss>
+<style lang="scss">
   tbody {
     background-color: white;
     width: 100%;
+    margin-left: 100%;
+    margin-right: 0%;
     border-spacing: 10px;
-
     tr {
       .grade {
         text-align: center;
+        margin-left: 10%;
         font-size: 20px;
       }
       .name {

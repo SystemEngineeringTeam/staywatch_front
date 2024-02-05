@@ -20,13 +20,13 @@
 <style lang="scss">
   .stay {
     table {
-      border-radius:5px;
+      border-radius: 5px;
       width: 80%;
       margin-top: 100px;
       margin-left: 10%;
       background-color: #dddddd;
       box-shadow: 0px 0px 20px rgba(3, 3, 3, 0.1);
-      
+
       th {
         font-size: 20px;
       }
@@ -42,9 +42,8 @@
       margin-right: auto;
       background-color: white;
       width: 90%;
-      border: solid 10px #dbd1d1; 
+      border: solid 10px #dbd1d1;
       border-radius: 10px;
-      
 
       .name {
         display: flex;

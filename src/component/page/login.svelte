@@ -1,6 +1,6 @@
 <script>
   import { isAdmmin } from '../store';
-  import {goto} from '$app/navigation';
+  import { goto } from '$app/navigation';
 
   let password = '';
   const handleSubmit = () => {
