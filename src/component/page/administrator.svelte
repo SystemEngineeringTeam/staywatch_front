@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   type User = {
     grade: string;
     name: string;
@@ -12,25 +14,95 @@
   let number = '';
   let address = '';
 
+  onMount(() => {
+    fetch('hh')
+    .then((res) => res.json())
+    .then((data) => {
+      userList=data;
+    });
+  });
   $: disabledCreateButton = grade === '' || name === '' || number === '' || address === '';
 
+  const createUser = async (user: User) => {
+    const sendData = {
+      user: {
+        name: user.name,
+        grade: user.grade,
+        studentNumber: user.number,
+        MACAddres: user.number
+      }
+    };
+
+    console.log(sendData);
+
+    const res = await fetch('https://todo', { method: 'POST', body: JSON.stringify(sendData) })
+      .then((response) => {
+        if (!response.ok) throw new Error('error');
+        return response.json();
+      })
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return null;
+      });
+    return res;
+  };
+
+  const deleteUser = async (user: User) => {
+    const sendData = {
+      user: {
+        name: user.name,
+        grade: user.grade,
+        studentNumber: user.number,
+        MACAddres: user.number
+      }
+    };
+
+    const res = await fetch('https://todo', { method: 'DELETE', body: JSON.stringify(sendData) })
+      .then((response) => {
+        if (!response.ok) throw new Error('error');
+        return response.json();
+      })
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return null;
+      });
+    return res;
+  };
+
   // 作成ボタンを押したときの処理
-  const handleClickCreateButton = () => {
+  const handleClickCreateButton = async () => {
     const editUser: User = {
       grade,
       name,
       number,
       address
     };
-    userList = [...userList, editUser];
-    grade = '';
-    name = '';
-    number = '';
-    address = '';
+    const res = await createUser(editUser);
+    if (res == null) {
+      window.alert('登録に失敗しました');
+    } else {
+      userList = [...userList, editUser];
+
+      grade = '';
+      name = '';
+      number = '';
+      address = '';
+    }
   };
   // 削除処理
-  const deleteItem = (index: number) => {
-    userList = userList.filter((_, i) => i !== index);
+  const deleteItem = async(index: number) => {
+    const res = await deleteUser(userList[index]);
+    if (res === null) {
+      window.alert('消除に失敗しました');
+    } else {
+      userList = userList.filter((_, i) => i !== index);
+    }
   };
 </script>
 

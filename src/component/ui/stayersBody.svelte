@@ -1,12 +1,25 @@
 <script lang="ts">
-  import stayersRes from './stayData.json';
+  import { onMount } from "svelte";
+
+  type Stayer = {
+    name: string;
+    grade: string;
+    startTime: string;
+  };
+  let stayerList: Stayer[] = [];
+  const url="https://raw.githubusercontent.com/SystemEngineeringTeam/staywatch_front/main/src/component/ui/logData.json";
+  onMount(() =>{
+    fetch(url).then((res) => res.json()).then((data)=>{
+      stayerList=data.stayers;
+    });
+  })
 </script>
 
 <tbody>
-  {#each stayersRes.stayers as stayer}
+  {#each stayerList as stayer}
     <tr>
-      <td class="grade">{stayer.grade}</td>
-      <td class="name">{stayer.name}</td>
+      <td class="grade">{stayer.name}</td>
+      <td class="name">{stayer.grade}</td>
       <td class="time">{stayer.startTime}</td>
     </tr>
   {/each}
