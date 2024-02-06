@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   type User = {
     grade: string;
@@ -16,10 +16,10 @@
 
   onMount(() => {
     fetch('hh')
-    .then((res) => res.json())
-    .then((data) => {
-      userList=data;
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        userList = data;
+      });
   });
   $: disabledCreateButton = grade === '' || name === '' || number === '' || address === '';
 
@@ -96,7 +96,7 @@
     }
   };
   // 削除処理
-  const deleteItem = async(index: number) => {
+  const deleteItem = async (index: number) => {
     const res = await deleteUser(userList[index]);
     if (res === null) {
       window.alert('消除に失敗しました');

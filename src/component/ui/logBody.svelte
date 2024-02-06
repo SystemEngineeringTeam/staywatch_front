@@ -1,6 +1,6 @@
 <script lang="ts">
   import stayersRes from './logData.json';
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   type Stayer = {
     name: string;
@@ -8,12 +8,15 @@
     endTime: string;
   };
   let stayerList: Stayer[] = [];
-  const url="https://raw.githubusercontent.com/SystemEngineeringTeam/staywatch_front/main/src/component/ui/logData.json";
-  onMount(() =>{
-    fetch(url).then((res) => res.json()).then((data)=>{
-      stayerList=data.stayers;
-    });
-  })
+  const url =
+    'https://raw.githubusercontent.com/SystemEngineeringTeam/staywatch_front/main/src/component/ui/logData.json';
+  onMount(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        stayerList = data.stayers;
+      });
+  });
 </script>
 
 <tbody>
