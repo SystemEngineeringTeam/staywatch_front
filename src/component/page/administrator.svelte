@@ -10,7 +10,17 @@
   };
 
   type UserWithId = User & {
-    id: string;
+    id: number;
+  };
+
+  type UsersRes = {
+    users: {
+      id: number;
+      name: string;
+      grade: string;
+      student_number: string;
+      MACAddress: string;
+    }[];
   };
 
   let userList: UserWithId[] = [];
@@ -27,7 +37,18 @@
 
     await fetch(url.toString())
       .then((res) => res.json())
-      .then((data) => (userList = data.users));
+      .then((data) => {
+        const res: UsersRes = data;
+        userList = res.users.map((user) => {
+          return {
+            id: user.id,
+            grade: user.grade,
+            name: user.name,
+            number: user.student_number,
+            address: user.MACAddress
+          };
+        });
+      });
   };
 
   const createUser = async (user: User) => {
@@ -43,7 +64,13 @@
     const url = new URL(PUBLIC_API_URL);
     url.pathname = '/api/user/add';
 
-    const res = await fetch(url.toString(), { method: 'POST', body: JSON.stringify(sendData) })
+    const res = await fetch(url.toString(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sendData)
+    })
       .then((response) => {
         if (!response.ok) throw new Error('error');
         return response.json();
@@ -66,7 +93,13 @@
     const url = new URL(PUBLIC_API_URL);
     url.pathname = '/api/user/delete';
 
-    const res = await fetch(url.toString(), { method: 'DELETE', body: JSON.stringify(sendData) })
+    const res = await fetch(url.toString(), {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sendData)
+    })
       .then((response) => {
         if (!response.ok) throw new Error('error');
         return response.json();
