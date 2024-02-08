@@ -7,6 +7,15 @@
     grade: string;
     endTime: string;
   };
+
+  type StayersRes = {
+    stayers: {
+      name: string;
+      grade: string;
+      startTime: string;
+    }[];
+  };
+
   let stayerList: Stayer[] = [];
 
   onMount(async () => {
@@ -15,8 +24,12 @@
 
     await fetch(url.toString())
       .then((res) => res.json())
-      .then((data) => {
-        stayerList = data.stayers;
+      .then((data: StayersRes) => {
+        stayerList = data.stayers.map((stayer) => {
+          const d = new Date(stayer.startTime);
+          const endTime = `${d.getMonth() + 1}月${d.getDate()}日 ${d.getHours()}:${d.getMinutes()}`;
+          return { ...stayer, endTime };
+        });
       })
       .catch((err) => console.error(err));
   });

@@ -36,8 +36,8 @@
   {/if}
   {#each stayerList as stayer}
     <tr>
-      <td class="grade">{stayer.name}</td>
-      <td class="name">{stayer.grade}</td>
+      <td class="grade">{stayer.grade}</td>
+      <td class="name">{stayer.name}</td>
       <td class="time">{stayer.startTime}</td>
     </tr>
   {/each}
