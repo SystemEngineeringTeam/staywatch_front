@@ -15,7 +15,11 @@
     await fetch(url.toString())
       .then((res) => res.json())
       .then((data) => {
-        stayerList = data.stayers;
+        stayerList = data.stayers.map((stayer: Stayer) => {
+          const d = new Date(stayer.startTime);
+          const startTime = `${d.getMonth() + 1}月${d.getDate()}日 ${d.getHours()}:${d.getMinutes()}`;
+          return { ...stayer, startTime };
+        });
         console.log(stayerList);
       })
       .catch((error) => {
