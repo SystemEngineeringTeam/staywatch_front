@@ -1,11 +1,16 @@
 # staywatch
 
-シス研stay_watchのフロント用リポジトリです。
+シス研滞在ウォッチのフロント用リポジトリです。
+
+# 環境変数の設定
+```env[.env]
+PUBLIC_API_URL=https://[host]
+```
 
 # 開発用サーバーの立ち上げ方
 
 ```zsh
-npm run dev
+yarn dev
 ```
 
 # ブランチの命名規則

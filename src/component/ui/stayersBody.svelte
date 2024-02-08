@@ -1,12 +1,39 @@
 <script lang="ts">
-  import stayersRes from './stayData.json';
+  import { onMount } from 'svelte';
+  import { PUBLIC_API_URL } from '$env/static/public';
+
+  type Stayer = {
+    name: string;
+    grade: string;
+    startTime: string;
+  };
+  let stayerList: Stayer[] = [];
+  const url = new URL(PUBLIC_API_URL);
+  url.pathname = 'api/stayers/get';
+
+  onMount(async () => {
+    await fetch(url.toString())
+      .then((res) => res.json())
+      .then((data) => {
+        stayerList = data.stayers;
+        console.log(stayerList);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
 </script>
 
 <tbody>
-  {#each stayersRes.stayers as stayer}
+  {#if stayerList.length === 0}
     <tr>
-      <td class="grade">{stayer.grade}</td>
-      <td class="name">{stayer.name}</td>
+      <td colspan="3">誰もいません</td>
+    </tr>
+  {/if}
+  {#each stayerList as stayer}
+    <tr>
+      <td class="grade">{stayer.name}</td>
+      <td class="name">{stayer.grade}</td>
       <td class="time">{stayer.startTime}</td>
     </tr>
   {/each}

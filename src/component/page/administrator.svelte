@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { PUBLIC_API_URL } from '$env/static/public';
+
   type User = {
     grade: string;
     name: string;
@@ -6,7 +9,11 @@
     address: string;
   };
 
-  let userList: User[] = [];
+  type UserWithId = User & {
+    id: string;
+  };
+
+  let userList: UserWithId[] = [];
   let grade = '';
   let name = '';
   let number = '';
@@ -14,24 +21,98 @@
 
   $: disabledCreateButton = grade === '' || name === '' || number === '' || address === '';
 
+  const fetchUsers = async () => {
+    const url = new URL(PUBLIC_API_URL);
+    url.pathname = '/api/users/get';
+
+    await fetch(url.toString())
+      .then((res) => res.json())
+      .then((data) => (userList = data.users));
+  };
+
+  const createUser = async (user: User) => {
+    const sendData = {
+      user: {
+        name: user.name,
+        grade: user.grade,
+        studentNumber: user.number,
+        MACAddress: user.number
+      }
+    };
+
+    const url = new URL(PUBLIC_API_URL);
+    url.pathname = '/api/user/add';
+
+    const res = await fetch(url.toString(), { method: 'POST', body: JSON.stringify(sendData) })
+      .then((response) => {
+        if (!response.ok) throw new Error('error');
+        return response.json();
+      })
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return null;
+      });
+    return res;
+  };
+
+  const deleteUser = async (user: UserWithId) => {
+    const sendData = {
+      user: { id: user.id }
+    };
+
+    const url = new URL(PUBLIC_API_URL);
+    url.pathname = '/api/user/delete';
+
+    const res = await fetch(url.toString(), { method: 'DELETE', body: JSON.stringify(sendData) })
+      .then((response) => {
+        if (!response.ok) throw new Error('error');
+        return response.json();
+      })
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return null;
+      });
+    return res;
+  };
+
   // 作成ボタンを押したときの処理
-  const handleClickCreateButton = () => {
+  const handleClickCreateButton = async () => {
     const editUser: User = {
       grade,
       name,
       number,
       address
     };
-    userList = [...userList, editUser];
-    grade = '';
-    name = '';
-    number = '';
-    address = '';
+    const res = await createUser(editUser);
+    if (res == null) {
+      window.alert('登録に失敗しました');
+    } else {
+      await fetchUsers();
+
+      grade = '';
+      name = '';
+      number = '';
+      address = '';
+    }
   };
+
   // 削除処理
-  const deleteItem = (index: number) => {
-    userList = userList.filter((_, i) => i !== index);
+  const deleteItem = async (index: number) => {
+    const res = await deleteUser(userList[index]);
+    if (res === null) {
+      window.alert('消除に失敗しました');
+    } else {
+      await fetchUsers();
+    }
   };
+
+  onMount(async () => await fetchUsers());
 </script>
 
 <div class="admini">
@@ -66,7 +147,7 @@
 
       <div class="scroll">
         {#if userList.length === 0}
-          <div>誰も登録されていません</div>
+          <div>登録されていません</div>
         {:else}
           {#each userList as user, index}
             <table class="entryList">
