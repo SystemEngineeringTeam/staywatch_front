@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { PUBLIC_API_URL } from '$env/static/public';
 
   type Stayer = {
     name: string;
@@ -7,18 +8,28 @@
     startTime: string;
   };
   let stayerList: Stayer[] = [];
-  const url =
-    'https://raw.githubusercontent.com/SystemEngineeringTeam/staywatch_front/main/src/component/ui/logData.json';
-  onMount(() => {
-    fetch(url)
+  const url = new URL(PUBLIC_API_URL);
+  url.pathname = 'api/stayers/get';
+
+  onMount(async () => {
+    await fetch(url.toString())
       .then((res) => res.json())
       .then((data) => {
         stayerList = data.stayers;
+        console.log(stayerList);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   });
 </script>
 
 <tbody>
+  {#if stayerList.length === 0}
+    <tr>
+      <td colspan="3">誰もいません</td>
+    </tr>
+  {/if}
   {#each stayerList as stayer}
     <tr>
       <td class="grade">{stayer.name}</td>
