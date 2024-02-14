@@ -9,10 +9,11 @@
   };
 
   type StayersRes = {
-    stayers: {
+    history: {
       name: string;
       grade: string;
       startTime: string;
+      endTime: string;
     }[];
   };
 
@@ -20,15 +21,15 @@
 
   onMount(async () => {
     const url = new URL(PUBLIC_API_URL);
-    url.pathname = 'api/stayers/get';
+    url.pathname = 'api/stayhistory/get';
 
     await fetch(url.toString())
       .then((res) => res.json())
       .then((data: StayersRes) => {
-        stayerList = data.stayers.map((stayer) => {
-          const d = new Date(stayer.startTime);
+        stayerList = data.history.map((history) => {
+          const d = new Date(history.startTime);
           const endTime = `${d.getMonth() + 1}月${d.getDate()}日 ${d.getHours()}:${d.getMinutes()}`;
-          return { ...stayer, endTime };
+          return { ...history, endTime };
         });
       })
       .catch((err) => console.error(err));
