@@ -137,6 +137,11 @@
 
   // 削除処理
   const deleteItem = async (index: number) => {
+    const isContinue = window.confirm(
+      `[${userList[index].id}]${userList[index].name}を削除します`
+    );
+    if (!isContinue) return;
+
     const res = await deleteUser(userList[index]);
     if (res === null) {
       window.alert('消除に失敗しました');
