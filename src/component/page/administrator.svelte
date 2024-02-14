@@ -57,7 +57,7 @@
         name: user.name,
         grade: user.grade,
         studentNumber: user.number,
-        MACAddress: user.number
+        MACAddress: user.address
       }
     };
 
